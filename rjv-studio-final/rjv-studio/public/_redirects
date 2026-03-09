@@ -1,4 +1,0 @@
-# _redirects for Cloudflare Pages SPA routing
-/admin/*  /admin/:splat  200
-/booking/*  /booking/:splat  200
-/auth/*  /auth/:splat  200
