@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 
 
-function getDb() { return getDb(); }
 
 function processUrl(url: string): { direct_url: string; thumbnail_url: string | null; media_type: string } {
   // YouTube

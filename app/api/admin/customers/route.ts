@@ -1,7 +1,7 @@
+import { getDb } from '@/lib/db';
 export const runtime = 'edge';
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
-import { getDb } from '@/lib/db';
 
 async function isAdmin(userId: string) {
   const sql = getDb();

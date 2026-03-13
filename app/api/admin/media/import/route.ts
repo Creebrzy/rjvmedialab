@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 
 
-function getDb() { return getDb(); }
 
 async function isAdmin(userId: string) {
   const sql = getDb();
