@@ -1,0 +1,14 @@
+import { neon } from '@neondatabase/serverless';
+function getDb() { return neon(process.env.DATABASE_URL!); }
+export const runtime = 'edge';
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  try {
+    const sql = getDb();
+    const services = await sql`SELECT * FROM services WHERE is_active = true ORDER BY category, name`;
+    return NextResponse.json(services);
+  } catch (e: any) {
+    return NextResponse.json({ error: e.message }, { status: 500 });
+  }
+}
