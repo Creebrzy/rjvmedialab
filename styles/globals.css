@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+
+  /* Dark mode (default) */
+  --bg: #080808;
+  --bg-2: #111111;
+  --bg-3: #1A1A1A;
+  --bg-4: #242424;
+  --text: #F0F0F0;
+  --text-dim: #888888;
+  --text-muted: #444444;
+  --border: rgba(255,255,255,0.07);
+}
+
+html.light {
+  --bg: #F5F3EE;
+  --bg-2: #EDEAE3;
+  --bg-3: #E4E0D7;
+  --bg-4: #D8D3C8;
+  --text: #0A0A0A;
+  --text-dim: #555555;
+  --text-muted: #AAAAAA;
+  --border: rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.25;
+}
+
+.font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+.font-mono { font-family: var(--font-mono); }
+
+/* Gold line accent */
+.gold-line {
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+}
+
+/* Theme-aware bg utilities */
+.bg-theme       { background: var(--bg); }
+.bg-theme-2     { background: var(--bg-2); }
+.bg-theme-3     { background: var(--bg-3); }
+.border-theme   { border-color: var(--border); }
+.text-theme     { color: var(--text); }
+.text-theme-dim { color: var(--text-dim); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* Selection */
+::selection { background: var(--gold); color: #080808; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
